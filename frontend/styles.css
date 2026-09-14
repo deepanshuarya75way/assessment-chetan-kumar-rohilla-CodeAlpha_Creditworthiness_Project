@@ -1404,3 +1404,107 @@ select option {
   font-size: 12px !important;
   width: 120px;
 }
+
+/* ─── Fund Explorer Filter & Chips ──────────────────────────────────────────── */
+.fund-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fund-search-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-md);
+  padding: 0 14px;
+  flex: 1;
+  min-width: 220px;
+  max-width: 420px;
+  height: 40px;
+  transition: border-color 0.2s;
+}
+
+.fund-search-input:focus-within {
+  border-color: var(--primary);
+}
+
+.fund-search-input input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 13px;
+  width: 100%;
+  font-family: var(--font-body);
+}
+
+.fund-search-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.fund-filter-selects {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fund-filter-selects select {
+  height: 40px;
+  font-size: 12.5px;
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-md);
+  padding: 0 32px 0 12px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 160px;
+}
+
+.fund-filter-selects select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.fund-chips-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.fund-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-dim);
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.fund-chip:hover {
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.fund-chip.active {
+  background: var(--primary-sub);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+}
