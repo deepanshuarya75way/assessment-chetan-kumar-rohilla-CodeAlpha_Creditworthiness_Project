@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nova-api:
+    build: .
+    ports:
+      - "8085:8085"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite:///./data/nova_credit.db
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    restart: unless-stopped

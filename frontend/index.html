@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Nova Credit AI — Institutional Financial Intelligence & Underwriting Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ════════════════════════ SPLASH INTRO ANIMATION ════════════════════════ -->
+<div id="splash-screen">
+  <div class="splash-logo-box">
+    <div class="splash-logo-pulse"></div>
+    <svg class="splash-svg" viewBox="0 0 24 24">
+      <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+      <path d="M12 8v8M8 12h8" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="splash-title">NOVA CREDIT AI</div>
+  <div class="splash-sub">INSTITUTIONAL RISK & UNDERWRITING ENGINE v2.2</div>
+  <div class="splash-bar-track">
+    <div class="splash-bar-fill"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════ AUTHENTICATION GATE SCREEN ════════════════════════ -->
+<div class="auth-gate-wrapper" id="view-auth">
+  
+  <!-- Ambient Background Lighting -->
+  <div class="auth-ambient-bg">
+    <div class="glow-orb spot-top-left"></div>
+    <div class="glow-orb spot-bottom-right"></div>
+  </div>
+
+  <!-- Financial Waves & Grid Geometry SVG Background -->
+  <svg class="auth-bg-geometry" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="bgGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-opacity="0.02" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="waveLineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E7A64A" stop-opacity="0.35"/>
+        <stop offset="50%" stop-color="#E56D69" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#DC4E8F" stop-opacity="0.35"/>
+      </linearGradient>
+      <linearGradient id="waveLineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#DC4E8F" stop-opacity="0.25"/>
+        <stop offset="50%" stop-color="#E7A64A" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#E56D69" stop-opacity="0.25"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1440" height="900" fill="url(#bgGrid)"/>
+
+    <!-- Faint Ascending Bar Geometry -->
+    <rect x="120" y="580" width="14" height="160" rx="3" fill="#E7A64A" fill-opacity="0.03"/>
+    <rect x="160" y="510" width="14" height="230" rx="3" fill="#E56D69" fill-opacity="0.03"/>
+    <rect x="200" y="440" width="14" height="300" rx="3" fill="#DC4E8F" fill-opacity="0.03"/>
+    <rect x="240" y="370" width="14" height="370" rx="3" fill="#E7A64A" fill-opacity="0.035"/>
+    
+    <!-- Flowing Data Curves -->
+    <path d="M-100 320 C 250 180, 650 480, 1540 280" stroke="url(#waveLineGrad1)" stroke-width="1.5"/>
+    <path d="M-100 480 C 350 340, 750 620, 1540 420" stroke="url(#waveLineGrad2)" stroke-width="1.2"/>
+    <path d="M-100 640 C 450 520, 850 740, 1540 560" stroke="url(#waveLineGrad1)" stroke-width="1" stroke-opacity="0.6"/>
+  </svg>
+
+  <!-- TOP MINIMAL HEADER -->
+  <header class="auth-top-header">
+    <div class="auth-header-brand">
+      <div class="auth-logo-svg">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#brandLogoGrad)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+          <path d="M12 8v8M8 12h8" stroke-width="1.8"/>
+          <defs>
+            <linearGradient id="brandLogoGrad" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0%" stop-color="#E7A64A"/>
+              <stop offset="50%" stop-color="#E56D69"/>
+              <stop offset="100%" stop-color="#DC4E8F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="auth-header-title">NOVA CREDIT AI</span>
+    </div>
+    <div class="auth-header-secure">
+      <i data-lucide="shield-check" style="width:14px;height:14px;color:#E7A64A;"></i>
+      <span>Secure access</span>
+    </div>
+  </header>
+
+  <!-- MAIN 2-COLUMN FULL-SCREEN GRID CONTAINER -->
+  <main class="auth-main-grid">
+    
+    <!-- LEFT SIDE: BRAND EXPERIENCE (55-60%) -->
+    <div class="auth-brand-side">
+      <div class="brand-experience-wrap">
+        <div class="brand-badge-row">
+          <span class="brand-pill">INSTITUTIONAL UNDERWRITING PLATFORM</span>
+        </div>
+        
+        <h1 class="brand-hero-headline">
+          Smarter Credit Decisions.<br/>
+          <span class="headline-gradient-text">Stronger Financial Future.</span>
+        </h1>
+        
+        <p class="brand-hero-sub">
+          AI-powered credit intelligence, risk assessment and financial insights built for smarter financial decisions.
+        </p>
+
+        <!-- 3 Restrained Capability Indicators -->
+        <div class="capability-indicators">
+          <div class="capability-item">
+            <div class="capability-dot"></div>
+            <span>Credit Intelligence</span>
+          </div>
+          <div class="capability-item">
+            <div class="capability-dot"></div>
+            <span>Risk Analytics</span>
+          </div>
+          <div class="capability-item">
+            <div class="capability-dot"></div>
+            <span>Financial Insights</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: AUTHENTICATION PANEL (40-45%) -->
+    <div class="auth-panel-side">
+      <div class="auth-card-container">
+        
+        <!-- Auth Header -->
+        <div class="auth-card-header">
+          <h2 class="auth-title" id="authHeaderTitle">Welcome back</h2>
+          <p class="auth-sub" id="authHeaderSub">Sign in to access your Nova workspace.</p>
+        </div>
+
+        <!-- Sign In / Create Account Navigation Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" id="btnTabLogin" onclick="switchAuthMode('login')">Sign In</button>
+          <button class="auth-tab-btn" id="btnTabRegister" onclick="switchAuthMode('register')">Create Account</button>
+        </div>
+
+        <!-- Notification Banner -->
+        <div class="auth-alert-banner" id="authAlert" style="display:none;"></div>
+
+        <!-- Main Auth Form -->
+        <form id="authMainForm" onsubmit="handleAuthSubmit(event)">
+          
+          <!-- Full Legal Name (Create Account Only) -->
+          <div class="form-group" id="fieldGroupName" style="display:none;">
+            <label class="form-label" for="inputAuthName">Full Legal Name</label>
+            <div class="input-wrap">
+              <i data-lucide="user" class="input-icon"></i>
+              <input type="text" id="inputAuthName" class="form-control" placeholder="e.g. Alex Morgan"/>
+            </div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label class="form-label" for="inputAuthEmail">Email Address</label>
+            <div class="input-wrap">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input type="email" id="inputAuthEmail" class="form-control" required placeholder="name@company.com"/>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inputAuthPassword" style="margin-bottom:0;">Password</label>
+              <a href="javascript:void(0)" onclick="toggleForgotPasswordView(true)" class="link-forgot" id="linkForgotPass">Forgot password?</a>
+            </div>
+            <div class="input-wrap">
+              <i data-lucide="lock" class="input-icon"></i>
+              <input type="password" id="inputAuthPassword" class="form-control" required placeholder="••••••••"/>
+              <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('inputAuthPassword', this)" title="Show/Hide Password">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="form-checkbox-group" id="fieldCheckboxRow">
+            <label class="checkbox-label">
+              <input type="checkbox" id="chkRememberMe" checked/>
+              <span id="chkRememberText">Remember me for 30 days</span>
+            </label>
+          </div>
+
+          <!-- Primary CTA Button -->
+          <button type="submit" class="btn-primary-cta" id="btnAuthSubmit">
+            <span id="btnAuthText">Sign In to Workspace</span>
+          </button>
+        </form>
+
+        <!-- Forgot Password Sub-View -->
+        <form id="forgotPassForm" onsubmit="handleForgotPasswordSubmit(event)" style="display:none;">
+          <p class="forgot-info-text">Enter your registered email address to receive password recovery instructions.</p>
+          <div class="form-group">
+            <label class="form-label" for="inputForgotEmail">Email Address</label>
+            <div class="input-wrap">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input type="email" id="inputForgotEmail" class="form-control" required placeholder="name@company.com"/>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary-cta">Send Reset Instructions</button>
+          <button type="button" class="btn-ghost-back" onclick="toggleForgotPasswordView(false)">Back to Sign In</button>
+        </form>
+
+        <!-- Footnote -->
+        <div class="auth-card-footnote">
+          <i data-lucide="lock" style="width:13px;height:13px;color:#E7A64A;"></i>
+          <span>Secure authentication • Private workspace</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTTOM MINIMAL FOOTER -->
+  <footer class="auth-bottom-footer">
+    <div class="footer-left">© Nova Credit AI</div>
+    <div class="footer-right">
+      <a href="javascript:void(0)" onclick="alert('Nova Credit AI Privacy Policy: All financial data is encrypted and isolated per user account.')">Privacy</a>
+      <span class="foot-sep">•</span>
+      <a href="javascript:void(0)" onclick="alert('Nova Credit AI Terms of Service: Institutional underwriting and credit scoring platform.')">Terms</a>
+      <span class="foot-sep">•</span>
+      <a href="javascript:void(0)" onclick="alert('Nova Credit Support: Contact support@novacredit.ai for assistance.')">Support</a>
+    </div>
+  </footer>
+</div>
+
+<div class="mobile-overlay-bg" id="mobileOverlay" onclick="toggleMobileSidebar()"></div>
+
+<!-- ════════════════════════ MAIN APPLICATION SHELL ════════════════════════ -->
+<div class="app-shell" id="appShell" style="display:none;">
+
+  <!-- ════════════════════ SIDEBAR NAVIGATION ════════════════════ -->
+  <aside class="sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+          <path d="M12 8v8M8 12h8" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <span class="brand-name" id="brandTitleText">NOVA CREDIT</span>
+      <span class="brand-ver" id="brandRoleBadge">v2.2</span>
+      <button class="mobile-close-btn" onclick="toggleMobileSidebar()"><i data-lucide="x"></i></button>
+    </div>
+
+    <!-- USER APP NAV ITEMS -->
+    <nav class="sidebar-nav" id="navGroupUser">
+      <div>
+        <div class="nav-group-label">Overview</div>
+        <ul class="nav-list">
+          <li><a class="nav-item active" onclick="navigateTo('/app/dashboard')"><i data-lucide="layout-grid"></i><span>Financial Overview</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nav-group-label">Credit Intelligence</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/app/credit-assessment')"><i data-lucide="user-check"></i><span>Credit Assessment</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/app/what-if')"><i data-lucide="sliders"></i><span>Improve My Credit</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/app/history')"><i data-lucide="clock"></i><span>Assessment History</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nav-group-label">Loan Intelligence</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/app/loans')"><i data-lucide="calculator"></i><span>Loan Intelligence</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nav-group-label">Wealth & Reports</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/app/investments')"><i data-lucide="trending-up"></i><span>Fund Explorer</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/app/reports')"><i data-lucide="file-text"></i><span>PDF Reports</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nav-group-label">Account</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/app/profile')"><i data-lucide="user"></i><span>My Profile</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/app/settings')"><i data-lucide="settings"></i><span>Security Settings</span></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ADMIN CONSOLE NAV ITEMS -->
+    <nav class="sidebar-nav" id="navGroupAdmin" style="display:none;">
+      <div>
+        <div class="nav-group-label">Admin Console</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/admin/dashboard')"><i data-lucide="bar-chart-2"></i><span>System Dashboard</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/admin/users')"><i data-lucide="users"></i><span>User Accounts</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/admin/activity')"><i data-lucide="activity"></i><span>Activity Audit Log</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nav-group-label">Operations</div>
+        <ul class="nav-list">
+          <li><a class="nav-item" onclick="navigateTo('/admin/assessments')"><i data-lucide="shield-check"></i><span>Global Underwriting</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/admin/models')"><i data-lucide="cpu"></i><span>Model Health</span></a></li>
+          <li><a class="nav-item" onclick="navigateTo('/admin/system')"><i data-lucide="server"></i><span>System Diagnostic</span></a></li>
+        </ul>
+      </div>
+      <div style="margin-top:20px;padding:0 12px;">
+        <button class="btn btn-secondary btn-block" style="font-size:11px;" onclick="navigateTo('/app/dashboard')">
+          <i data-lucide="external-link"></i><span>Switch to User View</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="avatar" id="userAvatar">U</div>
+      <div class="user-info">
+        <span class="user-name" id="userName">User Account</span>
+        <span class="user-role" id="userRole"><span class="pill pill-info" id="userRoleBadge">USER 🔒</span></span>
+      </div>
+      <button class="btn btn-ghost" style="padding:4px;margin-left:auto;" onclick="handleLogout()" title="Sign Out">
+        <i data-lucide="log-out"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ════════════════════ WORKSPACE CONTENT ════════════════════ -->
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-nav-toggle" id="mobileNavBtn" onclick="toggleMobileSidebar()" title="Toggle Navigation Menu">
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="page-title" id="pageTitle">Financial Overview</div>
+      </div>
+      <div class="topbar-right">
+        <span id="topbarUserId" class="user-id-chip"></span>
+        <div class="status-chip">
+          <span class="dot dot-green" id="modelDot"></span>
+          <span id="modelStatus">Champion CatBoost · Calibrated</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="handleLogout()" title="Sign Out">
+          <i data-lucide="log-out"></i><span>Sign Out</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="content" id="workspaceContent">
+
+      <!-- ════════ USER SECTION: DASHBOARD ════════ -->
+      <section class="view-section" id="view-user-dashboard">
+        <div class="hero-row">
+          <div class="hero-metric">
+            <span class="metric-lbl">Nova Credit Score</span>
+            <span class="metric-val" style="color:var(--text-primary);" id="ov-score">—</span>
+            <span class="metric-sub"><span class="pill pill-neutral" id="ov-tier">—</span></span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Risk Profile</span>
+            <span class="metric-val" id="ov-risk">—</span>
+            <span class="metric-sub" id="ov-prob">— Calibrated</span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Debt Obligation (FOIR)</span>
+            <span class="metric-val" id="ov-foir">—</span>
+            <span class="metric-sub" style="color:var(--text-muted);">Cap: 50.0% Max</span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Eligibility Verdict</span>
+            <span class="metric-val" style="font-size:18px;" id="ov-decision">—</span>
+            <span class="metric-sub"><span class="pill pill-neutral" id="ov-dec-pill">Run Assessment</span></span>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px;">
+          <div class="card">
+            <div class="card-title">Recent Personal Credit Assessments</div>
+            <p class="card-sub" style="margin-bottom:12px;">Private session history linked exclusively to your user ID.</p>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Applicant</th>
+                    <th>Requested</th>
+                    <th>Score</th>
+                    <th>Tier</th>
+                    <th>Verdict</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ov-history-table">
+                  <tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:20px;">Loading assessment history...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Personal Financial Profile</div>
+            <p class="card-sub" style="margin-bottom:12px;">Active parameters used for automated risk scoring.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;" id="userProfileSummaryCard">
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Monthly Income</span>
+                <strong style="font-family:var(--font-mono);" id="profSumIncome">₹50,000</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Existing EMI Obligations</span>
+                <strong style="font-family:var(--font-mono);" id="profSumEmi">₹0</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Liquid Savings</span>
+                <strong style="font-family:var(--font-mono);" id="profSumSavings">₹100,000</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Housing Asset</span>
+                <span style="text-transform:capitalize;" id="profSumHousing">own</span>
+              </div>
+              <button class="btn btn-secondary btn-block" style="margin-top:8px;" onclick="navigateTo('/app/profile')">Update Financial Profile</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: CREDIT ASSESSMENT WIZARD ════════ -->
+      <section class="view-section" id="view-user-assessment">
+        <div class="card">
+          <div class="card-title">5-Step Underwriting Intake Wizard</div>
+          <p class="card-sub" style="margin-bottom:16px;">Complete applicant details for calibrated ML risk assessment & Nova Score generation.</p>
+          <div id="assessmentIntakeWizardContainer">
+            <!-- Assessment Form Intake content populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: WHAT-IF SIMULATOR ════════ -->
+      <section class="view-section" id="view-user-what-if">
+        <div class="card" style="padding:22px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <div class="card-title" style="margin:0;">Improve My Credit</div>
+            <span class="pill pill-info" style="font-size:10px;padding:2px 8px;">What-If Simulator</span>
+          </div>
+          <p class="card-sub" style="margin-bottom:18px;">See how changes in your finances may affect your Nova assessment.</p>
+          <div id="simulatorContainer"></div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: ASSESSMENT HISTORY ════════ -->
+      <section class="view-section" id="view-user-history">
+        <div class="card">
+          <div class="card-title">Assessment History Ledger</div>
+          <p class="card-sub" id="hist-sub-title" style="margin-bottom:14px;">Private Session Ledger — Displaying your personal assessments.</p>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Applicant Name</th>
+                  <th>Requested Loan</th>
+                  <th>Nova Score</th>
+                  <th>Risk Tier</th>
+                  <th>Approval %</th>
+                  <th>Verdict</th>
+                  <th>PDF Report</th>
+                </tr>
+              </thead>
+              <tbody id="hist-table">
+                <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-muted);">Loading user records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: LOAN INTELLIGENCE ════════ -->
+      <section class="view-section" id="view-user-loans">
+        <div id="loanIntelligenceContainer">
+          <div id="calculatorContainer"></div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: WEALTH & FUNDS ════════ -->
+      <section class="view-section" id="view-user-investments">
+        <div class="card">
+          <div class="card-title">Wealth Intelligence & Fund Explorer</div>
+          <div id="fundsContainer"></div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: PDF REPORTS ════════ -->
+      <section class="view-section" id="view-user-reports">
+        <div class="card">
+          <div class="card-title">Generated Underwriting Reports</div>
+          <p class="card-sub" style="margin-bottom:14px;">Institutional PDF assessment reports generated for your account.</p>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Assessment ID</th>
+                  <th>Applicant Name</th>
+                  <th>Type</th>
+                  <th>Generated At</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody">
+                <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">No reports generated yet. Run an assessment to download PDF reports.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: PROFILE ════════ -->
+      <section class="view-section" id="view-user-profile">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Account Profile</div>
+            <form onsubmit="handleSaveProfile(event)" style="display:flex;flex-direction:column;gap:14px;margin-top:12px;">
+              <div class="field">
+                <label>User ID</label>
+                <input type="text" id="profUserId" disabled style="opacity:0.6;font-family:var(--font-mono);"/>
+              </div>
+              <div class="field">
+                <label>Full Name</label>
+                <input type="text" id="profFullName" required/>
+              </div>
+              <div class="field">
+                <label>Email Address</label>
+                <input type="email" id="profEmail" disabled style="opacity:0.6;"/>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Account Changes</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Financial Intake Defaults</div>
+            <form onsubmit="handleSaveFinancialDefaults(event)" style="display:flex;flex-direction:column;gap:14px;margin-top:12px;">
+              <div class="field">
+                <label>Monthly Net Income (₹)</label>
+                <input type="number" id="profFinIncome" required min="1000"/>
+              </div>
+              <div class="field">
+                <label>Existing EMI Obligations (₹)</label>
+                <input type="number" id="profFinEmi" required min="0"/>
+              </div>
+              <div class="field">
+                <label>Liquid Savings Balance (₹)</label>
+                <input type="number" id="profFinSavings" required min="0"/>
+              </div>
+              <button type="submit" class="btn btn-secondary">Update Financial Defaults</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ USER SECTION: SETTINGS ════════ -->
+      <section class="view-section" id="view-user-settings">
+        <div class="card" style="max-width:500px;">
+          <div class="card-title">Security & Password Settings</div>
+          <p class="card-sub" style="margin-bottom:14px;">Update your account password. Must be at least 8 characters long.</p>
+          <form onsubmit="handleChangePassword(event)" style="display:flex;flex-direction:column;gap:14px;">
+            <div class="field">
+              <label>Current Password</label>
+              <input type="password" id="inputCurrentPass" required placeholder="••••••••"/>
+            </div>
+            <div class="field">
+              <label>New Password</label>
+              <input type="password" id="inputNewPass" required placeholder="Min 8 characters"/>
+            </div>
+            <div class="field">
+              <label>Confirm New Password</label>
+              <input type="password" id="inputConfirmPass" required placeholder="Confirm new password"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Password</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: DASHBOARD ════════ -->
+      <section class="view-section" id="view-admin-dashboard">
+        <div class="hero-row">
+          <div class="hero-metric">
+            <span class="metric-lbl">Total Registered Users</span>
+            <span class="metric-val" style="color:var(--text-primary);" id="adm-kpi-users">0</span>
+            <span class="metric-sub" id="adm-kpi-active-users">0 Active Accounts</span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Total Assessments</span>
+            <span class="metric-val" style="color:var(--primary);" id="adm-kpi-assessments">0</span>
+            <span class="metric-sub">Multi-tenant Underwriting Log</span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Total What-If Simulations</span>
+            <span class="metric-val" style="color:var(--info);" id="adm-kpi-simulations">0</span>
+            <span class="metric-sub">Interactive Risk Simulations</span>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-lbl">Audit Log Events</span>
+            <span class="metric-val" style="color:var(--success);" id="adm-kpi-events">0</span>
+            <span class="metric-sub">System Activity Tracked</span>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px;">
+          <div class="card">
+            <div class="card-title">Recent User Signups</div>
+            <p class="card-sub" style="margin-bottom:12px;">Latest accounts created on the platform.</p>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Created At</th>
+                  </tr>
+                </thead>
+                <tbody id="adm-recent-signups-body">
+                  <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px;">Loading users...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Model Health Summary</div>
+            <p class="card-sub" style="margin-bottom:12px;">Champion CatBoost ML pipeline status.</p>
+            <div style="font-size:13px;display:flex;flex-direction:column;gap:8px;" id="adm-model-health-summary">
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Model Status</span>
+                <span class="pill pill-success">ONLINE 🟢</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Champion ROC-AUC</span>
+                <strong style="font-family:var(--font-mono);">0.7686</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-dim);">
+                <span style="color:var(--text-muted);">Calibration (ECE)</span>
+                <strong style="font-family:var(--font-mono);">1.67% (Sigmoid Platt)</strong>
+              </div>
+              <button class="btn btn-secondary btn-block" style="margin-top:8px;" onclick="navigateTo('/admin/models')">Inspect Full Model Telemetry</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: USER MANAGEMENT ════════ -->
+      <section class="view-section" id="view-admin-users">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div class="card-title">User Accounts Management</div>
+              <p class="card-sub">Inspect user accounts, usage history, and account activity.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <input type="text" id="admUserSearchInput" placeholder="Search by name, email or ID..." style="padding:6px 12px;font-size:12px;background:var(--surface-base);border:1px solid var(--border-light);border-radius:var(--r-sm);color:var(--text-primary);width:220px;" onkeyup="debounceAdminUserSearch()"/>
+              <button class="btn btn-secondary btn-sm" onclick="loadAdminUsers()">Refresh</button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Created At</th>
+                  <th>Last Login</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adm-users-table-body">
+                <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-muted);">Loading user records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: ACTIVITY AUDIT LOG ════════ -->
+      <section class="view-section" id="view-admin-activity">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div class="card-title">System Activity Audit Log</div>
+              <p class="card-sub">Real-time audit trail of user logins, assessments, simulations, and account changes.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="loadAdminActivityLogs()">Refresh Stream</button>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Timestamp</th>
+                  <th>Action</th>
+                  <th>User ID</th>
+                  <th>Email</th>
+                  <th>Resource</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="adm-activity-table-body">
+                <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--text-muted);">Loading audit events...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: GLOBAL ASSESSMENTS ════════ -->
+      <section class="view-section" id="view-admin-assessments">
+        <div class="card">
+          <div class="card-title">Global Credit Underwriting Log</div>
+          <p class="card-sub" style="margin-bottom:14px;">System-wide underwriting log across all accounts.</p>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Assessment ID</th>
+                  <th>Timestamp</th>
+                  <th>Applicant Name</th>
+                  <th>User ID</th>
+                  <th>Requested Loan</th>
+                  <th>Nova Score</th>
+                  <th>Tier</th>
+                  <th>Verdict</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adm-assessments-table-body">
+                <tr><td colspan="9" style="text-align:center;padding:24px;color:var(--text-muted);">Loading underwriting records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: MODEL DIAGNOSTICS ════════ -->
+      <section class="view-section" id="view-admin-models">
+        <div class="card">
+          <div class="card-title">Model Health & Diagnostics</div>
+          <div id="telemetryContainer"></div>
+        </div>
+      </section>
+
+      <!-- ════════ ADMIN SECTION: SYSTEM DIAGNOSTIC ════════ -->
+      <section class="view-section" id="view-admin-system">
+        <div class="card">
+          <div class="card-title">System Diagnostic & Environment Overview</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+              <span style="color:var(--text-muted);">Environment</span>
+              <strong style="font-family:var(--font-mono);">Development / Staging</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+              <span style="color:var(--text-muted);">Database Engine</span>
+              <strong style="font-family:var(--font-mono);">SQLite / SQLAlchemy ORM</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+              <span style="color:var(--text-muted);">Security Isolation</span>
+              <span class="pill pill-success">ENABLED (Server-Side user_id Scoping)</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+              <span style="color:var(--text-muted);">Password Hashing Algorithm</span>
+              <strong style="font-family:var(--font-mono);">PBKDF2-HMAC-SHA256 (100,000 Iterations)</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-dim);">
+              <span style="color:var(--text-muted);">Access Token Validity</span>
+              <strong style="font-family:var(--font-mono);">120 Minutes</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ════════ ADMIN USER INSPECTOR MODAL ════════ -->
+<div class="modal-overlay" id="adminUserModal">
+  <div class="auth-card" style="max-width:700px;width:95%;">
+    <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-dim);padding-bottom:10px;">
+      <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);" id="admUserModalTitle">User Account Drill-Down</h3>
+      <button class="btn btn-ghost" onclick="closeAdminUserModal()"><i data-lucide="x"></i></button>
+    </div>
+    <div id="admUserModalBody" style="max-height:75vh;overflow-y:auto;padding-right:4px;">
+      <p style="color:var(--text-muted);padding:24px;text-align:center;">Loading user details...</p>
+    </div>
+  </div>
+<!-- ════════ FUND DETAIL MODAL ════════ -->
+<div class="modal-overlay" id="fundDetailModal">
+  <div class="auth-card" style="max-width:620px;width:95%;">
+    <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-dim);padding-bottom:12px;">
+      <div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin:0;" id="fundModalTitle">Fund Intelligence Dossier</h3>
+        <span style="font-size:11.5px;color:var(--text-muted);" id="fundModalCategory">Category</span>
+      </div>
+      <button class="btn btn-ghost" onclick="closeFundModal()"><i data-lucide="x"></i></button>
+    </div>
+    <div id="fundModalBody" style="max-height:75vh;overflow-y:auto;padding:12px 2px;">
+      <p style="color:var(--text-muted);padding:20px;text-align:center;">Loading fund details...</p>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
