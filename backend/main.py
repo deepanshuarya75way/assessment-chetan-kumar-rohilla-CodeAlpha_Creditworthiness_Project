@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
@@ -30,14 +31,14 @@ from backend.app.database.session import (
     save_assessment_orm, get_assessment_by_id, get_history, count_assessments,
     save_loan_simulation, get_loan_simulations, save_report_record, get_user_reports,
     log_activity, get_activity_logs, get_system_stats,
-    save_loan_scenario, get_user_loan_scenarios, get_loan_scenario_by_id, delete_loan_scenario
+    save_loan_scenario, get_user_loan_scenarios, get_loan_scenario_by_id, delete_loan_scenario, RepaymentOutRecord, ModelVersionRecord, ModelReviewRecord,MonitoringThresholdRecord
 )
 from backend.schemas import (
     AssessmentRequest, SimulationRequest, LoanEmiRequest, LoanAffordabilityRequest,
     TenureOptimizeRequest, LoanPrepaymentRequest, LoanCompareRequest, LoanScenarioCreateRequest,
     UserLoginRequest, UserRegisterRequest, AuthTokenResponse, UserResponse,
     UserProfileUpdateRequest, PasswordChangeRequest, ForgotPasswordRequest, ResetPasswordRequest,
-    UserStatusUpdateRequest, FinancialProfileRequest, UserDetailAdminResponse
+    UserStatusUpdateRequest, FinancialProfileRequest, UserDetailAdminResponse,RepaymrntOutcomeRequest,ModelVersionCreateRequest,ModelReviewDecisionRequest,MonitoringThresholdRequest,
 )
 from backend.app.services.emi_service import calculate_emi
 from backend.app.services.amortization_service import generate_amortization_schedule

@@ -224,3 +224,46 @@ class UserDetailAdminResponse(BaseModel):
     recent_assessments: List[Dict[str, Any]]
     recent_simulations: List[Dict[str, Any]]
     recent_activities: List[Dict[str, Any]]
+
+class RepaymentOutcomeRequest(BaseModel):
+    assessment_id: str = Field(...,min_length=3) 
+    loan_id: str = Field(..., min_length=1, max_length=128) 
+
+    outcome_status: str = Field(
+        ...,
+        description="PERFORMING,DELINQUENT,DEFAULT,PAID_OFF"
+    )
+    actual_default: bool
+    days_past_due: int = Field(
+        0,
+        ge=0,
+        le=3650
+    ) 
+
+    repayment_date:Optional[str] = None
+
+    notes: Optional[str]=Field(
+        None,
+        Max_length=2000
+    )
+class ModelVersionCreateRequest(BaseModel):
+    version: str= Field(..., min_length= 1,max_length=128)
+    model_name: str=Field(...,min_length=1,max_length=128)
+    artifact_hash: Optional[str] =Field(None,max_length=128)
+
+class ModelReviewDecisionRequest(BaseModel) :
+    decision: str = Field(...,pattern="^(APPROVE|REJECT|ClOSE)$")
+    reviwer_notes: Optional[str] = Field(
+        None,
+        max_length=3000
+    )
+
+class MonitoringThresholdRequest(BaseModel) :
+    metric_name:str
+    decline_threshold: float = Field(
+        ...,
+        ge=0,
+        le=1
+    )
+    enabled: bool = True     
+

@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any
 
 from sqlalchemy import (
-    create_engine, Column, String, Integer, Float, Boolean, Text, ForeignKey, desc
+    create_engine, Column, String, Integer, Float, Boolean, Text, ForeignKey, desc, UniqueConstraint
 )
 from sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship
 from backend.app.core.config import get_settings
@@ -101,6 +101,132 @@ class CreditAssessmentRecord(Base):
 
     user = relationship("UserRecord", back_populates="assessments")
     reports = relationship("ReportRecord", back_populates="assessment", cascade="all, delete-orphan")
+
+class RepaymentOutcomeRecord(Base):
+    _tablename_="repayment_outcomes"
+    id=Column(String(36),primary_key=True,index=True)
+    assessment_id =Column(
+        String(36),
+        Foreignkey("credit_assessments.id",ondelete="RESTRICT"),
+        nullable=False,
+        index=True
+    )
+    loan_id = Column(String(128),nullable=False,index=True)
+    outcome_status = Column(String(64),nullable=False)
+    actual_default = Column(Boolean,nullable=False)
+
+    days_past_due=Column(Integer,default=0,nullable=false)
+    repayment_date = Column(String(64), nullable=True)
+
+    recorded_by = Column(
+        string(36),
+        Foreignkey("users.id" , ondelete="SET NULL"),
+        nullable=True
+    )
+
+    source = Column(String(32),default="MANUAL",nullable=False)
+    notes = Column(Text, nullable=True)
+
+    created_at=Column(String(64),nullable=False)
+
+    assessment = relationship("CreditAssessmentRecord")
+    recorder = relationship("UserRecord")
+
+class ModelVersionRecord(Base):
+    __tablename__="model_versions"
+
+    id= column(string(36),primary_key=True ,index=True)
+    version = column(string(128),unique=True,nullable=False,index=True)
+
+    model_name = Column(String(128),nullable=False)
+    artifact_hash = Column(String(128),nullable=True)
+
+    status= Column(
+        String(32),
+        default="Draft",
+        nullable=False
+    )
+
+    created_by = Column(
+        String(36),
+        ForeignKey("user.id",ondelete="SET NULL")
+        nullable=True
+    )
+    approved_by = Column(
+        String(36),
+        ForeignKey("users.id",ondelete="SET NULL"),
+        nullable =True
+    )
+
+    approved_at = Column(String(64),nullable=True)
+    activated_at = Column(String(64),nullable=True)
+
+    created_at = Column(String(64), nullable=False)
+
+    creator = Relationshi(
+        "UserRecord",
+        foreign_Keys=[created_by]
+    )
+
+    approver = relationship(
+        "UserRecord",
+        foreign_keys=[approved_by]
+    )
+
+class ModelReviewRecord(Base):
+    __tablename__="model_reviews"
+    id= Column(String(36),primary_key=True, index=True)
+    model_version = Column(String(128),nullable=False , index=True)
+    trigger_reason = Column(Text,nullable=False)
+     
+    baseline_metrics = Column(Text,nullable=False) 
+    current_metrics = Column(text,nullable=False)
+
+    status = Column(
+        String(32),
+        default="PENDING",
+        nullable=False
+    )
+    reviewer_id =Column(
+       String(36),
+       ForeignKey("users.id",ondelete="SET NULL"),
+       nullable=True
+    )
+
+    reviewer_notes= Column(Text,nullable=True)
+
+    created_at = Column(String(64),nullable=False)
+    reviewed_at= Column(String(64),nullable=True)
+
+    reviewer = relationship("UserRecord")
+
+class MonitoringThresholdRecord(Base):
+    __tablename__= "monitoring_thresholds"  
+
+    id=Column(Integer,Primary_Key=True,autoincrement=True)
+    metric_name = Column(String(64),unique=True,nullable=False)
+    decline_threshold = Column(Float,nullable=False)
+    enebled = Column(Boolean,default=True,nullable=False)
+
+    update_by = Column(
+        String(36),
+        ForeignKey("users.id",ondelete="SET NULL"),
+        nullable = True
+
+    )  
+    update_at = Column(String(64),nullable=False)
+    
+
+
+
+
+     
+   
+
+         
+
+
+   
 
 
 class LoanSimulationRecord(Base):
